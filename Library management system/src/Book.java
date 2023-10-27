@@ -4,22 +4,22 @@ public class Book {
     private char areaNumber;
     private int BookshelfNumber;
     private String positionNumber;
-    private String Type;
+    private String SubareNumber;
     public Book(){
         this.BookName="NO name";
         this.SerialNumber=00000000;
         this.areaNumber='A';
         this.BookshelfNumber=1;
         this.positionNumber="0-0000";
-        this.Type="Np Type";
+        this.SubareNumber="NO";
     }
-    public Book(String BookName,int SerialNumber,char areaNumber,int BookshelfNumber,String positionNumber,String Type){
+    public Book(String BookName,int SerialNumber,char areaNumber,int BookshelfNumber,String positionNumber,String SubareNumber){
         this.BookName=BookName;
         this.SerialNumber=SerialNumber;
         this.areaNumber=areaNumber;
         this.BookshelfNumber=BookshelfNumber;
         this.positionNumber=positionNumber;
-        this.Type=Type;
+        this.SubareNumber=SubareNumber;
     }
 //////////////////////////////////////////////////////////////////////
     public char getAreaNumber() {
@@ -46,12 +46,12 @@ public class Book {
         this.positionNumber = positionNumber;
     }
 
-    public String getType() {
-        return Type;
+    public String getSubareNumber() {
+        return SubareNumber;
     }
 
-    public void setType(String type) {
-        Type = type;
+    public void setSubareNumber(String subareNumber) {
+        SubareNumber = subareNumber;
     }
 
     public int getSerialNumber() {
@@ -70,6 +70,7 @@ public class Book {
         BookName = bookName;
     }
 //////////////////////////////////////////////////////////////////
+
     @Override
     public String toString() {
         return "Book{" +
@@ -78,7 +79,7 @@ public class Book {
                 ", areaNumber=" + areaNumber +
                 ", BookshelfNumber=" + BookshelfNumber +
                 ", positionNumber='" + positionNumber + '\'' +
-                ", Type='" + Type + '\'' +
+                ", SubareNumber='" + SubareNumber + '\'' +
                 '}';
     }
 }
