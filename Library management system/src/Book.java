@@ -21,7 +21,7 @@ public class Book {
         this.positionNumber=positionNumber;
         this.Type=Type;
     }
-
+//////////////////////////////////////////////////////////////////////
     public char getAreaNumber() {
         return areaNumber;
     }
@@ -69,7 +69,7 @@ public class Book {
     public void setBookName(String bookName) {
         BookName = bookName;
     }
-
+//////////////////////////////////////////////////////////////////
     @Override
     public String toString() {
         return "Book{" +
