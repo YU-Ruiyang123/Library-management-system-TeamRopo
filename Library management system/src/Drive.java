@@ -10,5 +10,9 @@ public class Drive {
         System.out.println("Library management system Project V 1.0");
 
     }
+    private void addastore(){
+        
+    }
 }
+
 
