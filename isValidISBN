@@ -1,0 +1,8 @@
+while (!isValidISBN(isbn)) {
+            System.out.print("无效的ISBN，请按正确格式重新输入ISBN（例如: 123456789X 或 123-456-789-X123）: ");
+            isbn = scanner.nextLine();
+private static boolean isValidISBN(String isbn) {
+        String regex = "^(97(8|9))?\\d{9}(\\d|X)$"; // ISBN-10或ISBN-13的正则表达式
+        // 移除ISBN中的短划线
+        String isbnClean = isbn.replace("-", "");
+        return Pattern.matches(regex, isbnClean);
