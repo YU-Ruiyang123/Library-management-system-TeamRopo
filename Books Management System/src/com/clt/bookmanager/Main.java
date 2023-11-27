@@ -21,8 +21,6 @@
 package com.clt.bookmanager;
 import java.util.List;
 import java.util.Scanner;
-import java.util.regex.Pattern;
-
 
 public class Main {
     private static BookManager manager = new BookManager(); // 用于管理书籍的对象
@@ -73,12 +71,6 @@ public class Main {
         System.out.print("输入ISBN: ");
         String isbn = scanner.nextLine();
 
-        while (!isValidISBN(isbn)) {
-            System.out.print("无效的ISBN，请按正确格式重新输入ISBN（例如: 123456789X 或 123-456-789-X123）: ");
-            isbn = scanner.nextLine();
-        }
-
-        
         manager.addBook(new Book(title, author, isbn));
         System.out.println("书籍已添加。");
     }
@@ -93,13 +85,6 @@ public class Main {
         for (Book book : books) {
             System.out.println(book.getTitle() + " by " + book.getAuthor() + " (ISBN: " + book.getIsbn() + ")");
         }
-    }
-
-        private static boolean isValidISBN(String isbn) {
-        String regex = "^(97(8|9))?\\d{9}(\\d|X)$"; // ISBN-10或ISBN-13的正则表达式
-        // 移除ISBN中的短划线
-        String isbnClean = isbn.replace("-", "");
-        return Pattern.matches(regex, isbnClean);
     }
 
     private static void updateBook() {
