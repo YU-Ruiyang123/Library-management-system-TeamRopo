@@ -65,21 +65,21 @@
         //return BookName;
   //  }
 
-    public void setBookName(String bookName) {
-        BookName = bookName;
-    }
+    //public void setBookName(String bookName) {
+       // BookName = bookName;
+  //  }
 //////////////////////////////////////////////////////////////////
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "BookName='" + BookName + '\'' +
-                ", SerialNumber=" + SerialNumber +
-                ", areaNumber=" + areaNumber +
-                ", BookshelfNumber=" + BookshelfNumber +
-                ", positionNumber='" + positionNumber + '\'' +
-                ", SubareNumber='" + SubareNumber + '\'' +
-                '}';
-    }
-}
+   // @Override
+    //public String toString() {
+       //return "Book{" +
+          //      "BookName='" + BookName + '\'' +
+            //    ", SerialNumber=" + SerialNumber +
+            //    ", areaNumber=" + areaNumber +
+              // / ", BookshelfNumber=" + BookshelfNumber +
+            // /   ", positionNumber='" + positionNumber + '\'' +
+             //   ", SubareNumber='" + SubareNumber + '\'' +
+               // '}';
+  //  }
+//
 
