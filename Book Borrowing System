@@ -1,57 +1,57 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+//import java.util.HashMap;
+// import java.util.Map;
+// import java.util.Scanner;
 
-public class BookBorrowingSystem {
-    private static Map<String, String> books = new HashMap<>();
+//public class BookBorrowingSystem {
+    //private static Map<String, String> books = new HashMap<>();
 
-    public static void main(String[] args) {
+   // public static void main(String[] args) {
         // 初始化图书库存
-        books.put("Java编程思想", "作者：Bruce Eckel");
-        books.put("Effective Java", "作者：Joshua Bloch");
-        books.put("Java核心技术卷1", "作者：Cay S. Horstmann");
+       // books.put("Java编程思想", "作者：Bruce Eckel");
+       // books.put("Effective Java", "作者：Joshua Bloch");
+      //  books.put("Java核心技术卷1", "作者：Cay S. Horstmann");
 
-        Scanner scanner = new Scanner(System.in);
-        while (true) {
-            System.out.println("请输入操作：1. 查询图书 2. 借阅图书 3. 归还图书 4. 退出");
-            int operation = scanner.nextInt();
-            switch (operation) {
-                case 1:
-                    System.out.println("请输入要查询的图书名称：");
-                    String queryBookName = scanner.next();
-                    if (books.containsKey(queryBookName)) {
-                        System.out.println("图书：" + queryBookName + "，" + books.get(queryBookName));
-                    } else {
-                        System.out.println("未找到该图书");
-                    }
-                    break;
-                case 2:
-                    System.out.println("请输入要借阅的图书名称：");
-                    String borrowBookName = scanner.next();
-                    if (books.containsKey(borrowBookName)) {
-                        System.out.println("您已成功借阅图书：" + borrowBookName + "，作者：" + books.get(borrowBookName));
-                        books.remove(borrowBookName);
-                    } else {
-                        System.out.println("未找到该图书");
-                    }
-                    break;
-                case 3:
-                    System.out.println("请输入要归还的图书名称：");
-                    String returnBookName = scanner.next();
-                    if (!books.containsKey(returnBookName)) {
-                        System.out.println("未找到该图书");
-                    } else {
-                        System.out.println("您已成功归还图书：" + returnBookName + "，作者：" + books.get(returnBookName));
-                        books.put(returnBookName, books.get(returnBookName));
-                    }
-                    break;
-                case 4:
-                    System.out.println("感谢使用，再见！");
-                    scanner.close();
-                    return;
-                default:
-                    System.out.println("无效的操作，请重新输入");
-            }
-        }
-    }
-}
+     //   Scanner scanner = new Scanner(System.in);
+      //  while (true) {
+      //     System.out.println("请输入操作：1. 查询图书 2. 借阅图书 3. 归还图书 4. 退出");
+      //      int operation = scanner.nextInt();
+       //     switch (operation) {
+         //       case 1:
+           //         System.out.println("请输入要查询的图书名称：");
+            //        String queryBookName = scanner.next();
+             //       if (books.containsKey(queryBookName)) {
+              //          System.out.println("图书：" + queryBookName + "，" + books.get(queryBookName));
+                //    } else {
+                 //       System.out.println("未找到该图书");
+                 //   }
+                 //   break;
+             //   case 2:
+               //     System.out.println("请输入要借阅的图书名称：");
+                 //   String borrowBookName = scanner.next();
+                  //  if (books.containsKey(borrowBookName)) {
+                   //     System.out.println("您已成功借阅图书：" + borrowBookName + "，作者：" + books.get(borrowBookName));
+                    //    books.remove(borrowBookName);
+                 //   } else {
+                    //    System.out.println("未找到该图书");
+                 //   }
+                  //  break;
+              //  case 3:
+                 //   System.out.println("请输入要归还的图书名称：");
+                 //   String returnBookName = scanner.next();
+                 //   if (!books.containsKey(returnBookName)) {
+                 //       System.out.println("未找到该图书");
+                 //   } else {
+                 //       System.out.println("您已成功归还图书：" + returnBookName + "，作者：" + books.get(returnBookName));
+                 //       books.put(returnBookName, books.get(returnBookName));
+               //     }
+                 //   break;
+              //  case 4:
+                //    System.out.println("感谢使用，再见！");
+                 //   scanner.close();
+                 //   return;
+             //   default:
+              //      System.out.println("无效的操作，请重新输入");
+          //  }
+       // }
+ //   }
+//}
