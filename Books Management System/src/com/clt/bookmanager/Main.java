@@ -123,4 +123,16 @@ public class Main {
         manager.deleteBook(isbn);
         System.out.println("书籍已删除。");
     }
+    private static void searchBooks() {
+        System.out.print("输入搜索关键字: ");
+        String keyword = scanner.nextLine();
+        List<Book> foundBooks = manager.searchBooks(keyword);
+        if (foundBooks.isEmpty()) {
+            System.out.println("没有找到相关书籍。");
+        } else {
+            for (Book book : foundBooks) {
+                System.out.println(book.getTitle() + " by " + book.getAuthor() + " (ISBN: " + book.getIsbn() + ")");
+            }
+        }
+    }
 }
