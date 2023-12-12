@@ -34,7 +34,8 @@ public class Main {
             System.out.println("2. 显示所有书籍");
             System.out.println("3. 更新书籍");
             System.out.println("4. 删除书籍");
-            System.out.println("5. 退出");
+            System.out.println("5. 搜索书籍");
+            System.out.println("6. 退出");
             System.out.print("请输入您的选择: ");
             int choice = scanner.nextInt();
             scanner.nextLine(); // 清除输入行的换行符
@@ -53,6 +54,9 @@ public class Main {
                     deleteBook();
                     break;
                 case 5:
+                    searchBooks(); // 调用搜索书籍的方法
+                    break;
+                case 6:
                     System.out.println("退出系统。");
                     // 注意：这里我们不再关闭scanner，避免关闭System.in
                     return;
@@ -72,7 +76,7 @@ public class Main {
         System.out.print("输入ISBN: ");
         String isbn = scanner.nextLine();
 
-                while (!isValidISBN(isbn)) {
+        while (!isValidISBN(isbn)) {
             System.out.print("无效的ISBN，请按正确格式重新输入ISBN（例如: 123456789X 或 123-456-789-X123）: ");
             isbn = scanner.nextLine();
         }
@@ -93,12 +97,13 @@ public class Main {
         }
     }
 
-        private static boolean isValidISBN(String isbn) {
+    private static boolean isValidISBN(String isbn) {
         String regex = "^(97(8|9))?\\d{9}(\\d|X)$"; // ISBN-10或ISBN-13的正则表达式
         // 移除ISBN中的短划线
         String isbnClean = isbn.replace("-", "");
         return Pattern.matches(regex, isbnClean);
     }
+
 
     private static void updateBook() {
         System.out.print("输入要更新的书籍的ISBN: ");
@@ -123,6 +128,7 @@ public class Main {
         manager.deleteBook(isbn);
         System.out.println("书籍已删除。");
     }
+
     private static void searchBooks() {
         System.out.print("输入搜索关键字: ");
         String keyword = scanner.nextLine();
@@ -136,3 +142,6 @@ public class Main {
         }
     }
 }
+
+
+// 搜索书籍的新方法
