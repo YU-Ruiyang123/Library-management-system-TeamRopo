@@ -28,7 +28,9 @@ public class Main {
     private static Scanner scanner = new Scanner(System.in); // 用于获取用户输入的扫描器
 
     public static void main(String[] args) {
+        manager.loadBooksFromFile(); // 程序启动时加载书籍数据
         while (true) {
+            //System.out.println("Current working directory: " + System.getProperty("user.dir")); // 获取程序运行时的工作目录
             System.out.println("\n图书管理系统:");
             System.out.println("1. 添加书籍");
             System.out.println("2. 显示所有书籍");
