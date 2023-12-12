@@ -3,9 +3,12 @@ package com.clt.bookmanager;
 import java.util.ArrayList;
 //import java.util.Iterator;
 import java.util.List;
+import java.io.*;
 
 public class BookManager {
     private List<Book> books = new ArrayList<>();
+    private static final String FILE_PATH = "data/books.csv"; // 数据文件路径
+
 
     // 添加书籍
     public void addBook(Book book) {
@@ -43,6 +46,32 @@ public class BookManager {
     // 根据ISBN删除书籍
     public void deleteBook(String isbn) {
         books.removeIf(book -> book.getIsbn().equals(isbn));
+    }
+
+    // 保存书籍数据到文件
+    public void saveBooksToFile() {
+        try (PrintWriter writer = new PrintWriter(new File(FILE_PATH))) {
+            for (Book book : books) {
+                writer.println(book.getTitle() + "," + book.getAuthor() + "," + book.getIsbn());
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println("无法保存书籍数据：" + e.getMessage());
+        }
+    }
+
+    // 从文件加载书籍数据
+    public void loadBooksFromFile() {
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data.length >= 3) {
+                    books.add(new Book(data[0], data[1], data[2]));
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("无法加载书籍数据：" + e.getMessage());
+        }
     }
 }
 
