@@ -45,22 +45,25 @@ public class Main {
             switch (choice) {
                 case 1:
                     addBook();
+                    manager.saveBooksToFile(); // 添加书籍后,保存数据到文件data/books.csv
                     break;
                 case 2:
                     displayAllBooks();
                     break;
                 case 3:
                     updateBook();
+                    manager.saveBooksToFile(); // 更新书籍后,保存数据到文件data/books.csv
                     break;
                 case 4:
                     deleteBook();
+                    manager.saveBooksToFile(); // 删除书籍后,d保存数据到文件data/books.csv
                     break;
                 case 5:
                     searchBooks(); // 调用搜索书籍的方法
                     break;
                 case 6:
                     System.out.println("退出系统。");
-                    // 注意：这里我们不再关闭scanner，避免关闭System.in
+                    // 注意：不再关闭scanner，避免关闭System.in
                     return;
                 default:
                     System.out.println("无效的选择，请重新输入！");
