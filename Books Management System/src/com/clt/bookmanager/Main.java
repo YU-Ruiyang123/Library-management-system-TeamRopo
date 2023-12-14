@@ -125,7 +125,6 @@ public class Main {
         manager.updateBook(isbn, new Book(newTitle, newAuthor, isbn));
         System.out.println("书籍已更新。");
     }
-
     private static void deleteBook() {
         System.out.print("输入要删除的书籍的ISBN: ");
         String isbn = scanner.nextLine();

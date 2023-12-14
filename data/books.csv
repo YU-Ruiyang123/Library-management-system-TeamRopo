@@ -1,4 +1,5 @@
-Good Book,Dave,0000000000
-Interesting Book,Dave,1111111111
-Exciting Book,Dave,2222222222
-Wonderful Book,Dave,3333333333
+"very, very, very good book","Dave","0000000000"
+"""123""","Dave","1111111111"
+",,,","Dave","2222222222"
+"""""""""""","Dave","3333333333"
+"123","""Dave""","4444444444"

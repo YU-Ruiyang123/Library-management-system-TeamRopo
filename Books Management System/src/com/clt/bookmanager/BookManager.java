@@ -52,26 +52,39 @@ public class BookManager {
     public void saveBooksToFile() {
         try (PrintWriter writer = new PrintWriter(new File(FILE_PATH))) {
             for (Book book : books) {
-                writer.println(book.getTitle() + "," + book.getAuthor() + "," + book.getIsbn());
+                writer.println(formatCsvField(book.getTitle()) + "," +
+                        formatCsvField(book.getAuthor()) + "," +
+                        formatCsvField(book.getIsbn()));
             }
         } catch (FileNotFoundException e) {
             System.err.println("无法保存书籍数据：" + e.getMessage());
         }
     }
 
-    // 从文件加载书籍数据
     public void loadBooksFromFile() {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] data = line.split(",");
+                String[] data = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
                 if (data.length >= 3) {
-                    books.add(new Book(data[0], data[1], data[2]));
+                    books.add(new Book(unformatCsvField(data[0]),
+                            unformatCsvField(data[1]),
+                            unformatCsvField(data[2])));
                 }
             }
         } catch (IOException e) {
             System.err.println("无法加载书籍数据：" + e.getMessage());
         }
     }
-}
 
+    private String formatCsvField(String data) {
+        return "\"" + data.replace("\"", "\"\"") + "\"";
+    }
+
+    private String unformatCsvField(String data) {
+        if (data.startsWith("\"") && data.endsWith("\"")) {
+            data = data.substring(1, data.length() - 1); // 移除首尾双引号
+        }
+        return data.replace("\"\"", "\""); // 将两个双引号转换为一个双引号
+    }
+}

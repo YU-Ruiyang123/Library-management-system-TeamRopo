@@ -10,13 +10,6 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\data\books_backup.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
       </map>
     </option>
   </component>
