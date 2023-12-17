@@ -33,7 +33,7 @@ public class Main {
         while (true) {
             displayMenu();
             try {
-                System.out.print("请输入您的选择: ");
+                System.out.print("Please enter your selection: ");
                 int choice = scanner.nextInt();
                 scanner.nextLine(); // 清除输入行的换行符
 
@@ -57,51 +57,51 @@ public class Main {
                         searchBooks(); // 调用搜索书籍的方法
                         break;
                     case 6:
-                        System.out.println("退出系统。");
+                        System.out.println("Log out");
                         return;
                     default:
                         System.out.println("无效的选择，请重新输入！");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("输入错误，请输入有效的数字选项！");
+                System.out.println("Invalid selection, please re-enter！");
                 scanner.nextLine(); // 清除错误输入
             }
         }
     }
 
     private static void displayMenu() {
-        System.out.println("\n图书管理系统:");
-        System.out.println("1. 添加书籍");
-        System.out.println("2. 显示所有书籍");
-        System.out.println("3. 更新书籍");
-        System.out.println("4. 删除书籍");
-        System.out.println("5. 搜索书籍");
-        System.out.println("6. 退出");
+        System.out.println("\n Books Management System:");
+        System.out.println("1. Add a book");
+        System.out.println("2. Display all books");
+        System.out.println("3. Update a book");
+        System.out.println("4. Delete a book");
+        System.out.println("5. Sreach for a book");
+        System.out.println("6. Exit");
     }
 
     private static void addBook() {
-        System.out.print("输入书名: ");
+        System.out.print("Enter title: ");
         String title = scanner.nextLine();
 
-        System.out.print("输入作者: ");
+        System.out.print("Enter author: ");
         String author = scanner.nextLine();
 
-        System.out.print("输入ISBN: ");
+        System.out.print("Enter ISBN: ");
         String isbn = scanner.nextLine();
 
         while (!isValidISBN(isbn)) {
-            System.out.print("无效的ISBN，请按正确格式重新输入ISBN（例如: 123456789X 或 123-456-789-X123）: ");
+            System.out.print("Invalid ISBN, please enter the ISBN in the correct format (for example: 123456789X or 123-456-789-X123): ");
             isbn = scanner.nextLine();
         }
 
         manager.addBook(new Book(title, author, isbn));
-        System.out.println("书籍已添加。");
+        System.out.println("Book added.");
     }
 
     private static void displayAllBooks() {
         List<Book> books = manager.getAllBooks();
         if (books.isEmpty()) {
-            System.out.println("没有找到书籍。");
+            System.out.println("No books found.");
             return;
         }
 
@@ -119,34 +119,34 @@ public class Main {
 
 
     private static void updateBook() {
-        System.out.print("输入要更新的书籍的ISBN: ");
+        System.out.print("Enter the ISBN of the book you want to update: ");
         String isbn = scanner.nextLine();
 
         // 假设我们只更新书名和作者，不更新ISBN
-        System.out.print("输入新书名: ");
+        System.out.print("Enter new title: ");
         String newTitle = scanner.nextLine();
 
-        System.out.print("输入新作者: ");
+        System.out.print("Enter new author: ");
         String newAuthor = scanner.nextLine();
 
         // 使用ISBN查找并更新书籍
         manager.updateBook(isbn, new Book(newTitle, newAuthor, isbn));
-        System.out.println("书籍已更新。");
+        System.out.println("Books have been updated.");
     }
     private static void deleteBook() {
-        System.out.print("输入要删除的书籍的ISBN: ");
+        System.out.print("Enter the ISBN of the book you want to delete: ");
         String isbn = scanner.nextLine();
 
         manager.deleteBook(isbn);
-        System.out.println("书籍已删除。");
+        System.out.println("Books deleted.");
     }
 
     private static void searchBooks() {
-        System.out.print("输入搜索关键字: ");
+        System.out.print("Enter the search keyword: ");
         String keyword = scanner.nextLine();
         List<Book> foundBooks = manager.searchBooks(keyword);
         if (foundBooks.isEmpty()) {
-            System.out.println("没有找到相关书籍。");
+            System.out.println("No books were found.");
         } else {
             for (Book book : foundBooks) {
                 System.out.println(book.getTitle() + " by " + book.getAuthor() + " (ISBN: " + book.getIsbn() + ")");
