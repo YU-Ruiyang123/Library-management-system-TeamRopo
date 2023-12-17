@@ -7,20 +7,20 @@ import java.io.*;
 
 public class BookManager {
     private List<Book> books = new ArrayList<>();
-    private static final String FILE_PATH = "data/books.csv"; // 数据文件路径
+    private static final String FILE_PATH = "data/books.csv"; //Data file path / 数据文件路径
 
 
-    // 添加书籍
+    //Add books / 添加书籍
     public void addBook(Book book) {
         books.add(book);
     }
 
-    // 获取所有书籍
+    // Get all Books /获取所有书籍
     public List<Book> getAllBooks() {
-        return new ArrayList<>(books); // 返回书籍的新列表以保持封装性
+        return new ArrayList<>(books); // Returns a new list of books to preserve encapsulation /返回书籍的新列表以保持封装性
     }
 
-    // 搜索书籍的方法
+    // Ways to search for books /搜索书籍的方法
     public List<Book> searchBooks(String keyword) {
         List<Book> foundBooks = new ArrayList<>();
         for (Book book : books) {
@@ -33,7 +33,7 @@ public class BookManager {
         return foundBooks;
     }
 
-    // 根据ISBN更新书籍
+    //Update books according to ISBN /根据ISBN更新书籍
     public void updateBook(String isbn, Book newBook) {
         for (int i = 0; i < books.size(); i++) {
             if (books.get(i).getIsbn().equals(isbn)) {
@@ -43,12 +43,12 @@ public class BookManager {
         }
     }
 
-    // 根据ISBN删除书籍
+    //Delete books according to ISBN / 根据ISBN删除书籍
     public void deleteBook(String isbn) {
         books.removeIf(book -> book.getIsbn().equals(isbn));
     }
 
-    // 保存书籍数据到文件
+    // Save book data to a file /保存书籍数据到文件
     public void saveBooksToFile() {
         try (PrintWriter writer = new PrintWriter(new File(FILE_PATH))) {
             for (Book book : books) {
@@ -83,8 +83,8 @@ public class BookManager {
 
     private String unformatCsvField(String data) {
         if (data.startsWith("\"") && data.endsWith("\"")) {
-            data = data.substring(1, data.length() - 1); // 移除首尾双引号
+            data = data.substring(1, data.length() - 1); // Remove the double quotes /移除首尾双引号
         }
-        return data.replace("\"\"", "\""); // 将两个双引号转换为一个双引号
+        return data.replace("\"\"", "\""); // Converts two double quotes to one double quotation mark /将两个双引号转换为一个双引号
     }
 }

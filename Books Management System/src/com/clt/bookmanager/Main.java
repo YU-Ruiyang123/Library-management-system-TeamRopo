@@ -25,36 +25,36 @@ import java.util.regex.Pattern;
 import java.util.InputMismatchException;
 
 public class Main {
-    private static BookManager manager = new BookManager(); // 用于管理书籍的对象
-    private static Scanner scanner = new Scanner(System.in); // 用于获取用户输入的扫描器
+    private static BookManager manager = new BookManager(); //Objects used to manage books. /用于管理书籍的对象
+    private static Scanner scanner = new Scanner(System.in); //A scanner used to obtain user input./用于获取用户输入的扫描器
 
     public static void main(String[] args) {
-        manager.loadBooksFromFile(); // 程序启动时加载书籍数据
+        manager.loadBooksFromFile(); // Load the book data when the program starts./程序启动时加载书籍数据
         while (true) {
             displayMenu();
             try {
                 System.out.print("Please enter your selection: ");
                 int choice = scanner.nextInt();
-                scanner.nextLine(); // 清除输入行的换行符
+                scanner.nextLine(); //Clear the newline of the input line./清除输入行的换行符
 
                 switch (choice) {
                     case 1:
                         addBook();
-                        manager.saveBooksToFile(); // 添加书籍后,保存数据到文件data/books.csv
+                        manager.saveBooksToFile(); //After adding the book, save the data to the file to data/books.csv /添加书籍后,保存数据到文件data/books.csv
                         break;
                     case 2:
                         displayAllBooks();
                         break;
                     case 3:
                         updateBook();
-                        manager.saveBooksToFile(); // 更新书籍后,保存数据到文件data/books.csv
+                        manager.saveBooksToFile(); //After updating the book, save the data to a file to data/books.csv /更新书籍后,保存数据到文件data/books.csv
                         break;
                     case 4:
                         deleteBook();
-                        manager.saveBooksToFile(); // 删除书籍后,d保存数据到文件data/books.csv
+                        manager.saveBooksToFile(); // After deleting the books,d saves the data to the file data/books.csv /删除书籍后,d保存数据到文件data/books.csv
                         break;
                     case 5:
-                        searchBooks(); // 调用搜索书籍的方法
+                        searchBooks(); //Invoke the search book method /调用搜索书籍的方法
                         break;
                     case 6:
                         System.out.println("Log out");
@@ -64,7 +64,7 @@ public class Main {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid selection, please re-enter！");
-                scanner.nextLine(); // 清除错误输入
+                scanner.nextLine(); //Clear incorrect input / 清除错误输入
             }
         }
     }
@@ -111,8 +111,8 @@ public class Main {
     }
 
     private static boolean isValidISBN(String isbn) {
-        String regex = "^(97(8|9))?\\d{9}(\\d|X)$"; // ISBN-10或ISBN-13的正则表达式
-        // 移除ISBN中的短划线
+        String regex = "^(97(8|9))?\\d{9}(\\d|X)$"; // The regular expression of ISBN-10 or ISBN-13 /ISBN-10或ISBN-13的正则表达式
+        // Remove dashes from ISBNs /移除ISBN中的短划线
         String isbnClean = isbn.replace("-", "");
         return Pattern.matches(regex, isbnClean);
     }
@@ -122,14 +122,14 @@ public class Main {
         System.out.print("Enter the ISBN of the book you want to update: ");
         String isbn = scanner.nextLine();
 
-        // 假设我们只更新书名和作者，不更新ISBN
+        // Suppose we update only the title and author, but not the ISBN /假设我们只更新书名和作者，不更新ISBN
         System.out.print("Enter new title: ");
         String newTitle = scanner.nextLine();
 
         System.out.print("Enter new author: ");
         String newAuthor = scanner.nextLine();
 
-        // 使用ISBN查找并更新书籍
+        // Find and update books using ISBN /使用ISBN查找并更新书籍
         manager.updateBook(isbn, new Book(newTitle, newAuthor, isbn));
         System.out.println("Books have been updated.");
     }
@@ -141,6 +141,8 @@ public class Main {
         System.out.println("Books deleted.");
     }
 
+
+    // New ways to search for books /搜索书籍的新方法
     private static void searchBooks() {
         System.out.print("Enter the search keyword: ");
         String keyword = scanner.nextLine();
@@ -156,4 +158,4 @@ public class Main {
 }
 
 
-// 搜索书籍的新方法
+
