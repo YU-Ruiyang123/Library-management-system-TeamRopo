@@ -57,7 +57,7 @@ public class BookManager {
                         formatCsvField(book.getIsbn()));
             }
         } catch (FileNotFoundException e) {
-            System.err.println("无法保存书籍数据：" + e.getMessage());
+            System.err.println("Unable to save book data：" + e.getMessage());
         }
     }
 
@@ -73,7 +73,7 @@ public class BookManager {
                 }
             }
         } catch (IOException e) {
-            System.err.println("无法加载书籍数据：" + e.getMessage());
+            System.err.println("Unable to load book data：" + e.getMessage());
         }
     }
 
