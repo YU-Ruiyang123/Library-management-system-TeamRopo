@@ -60,7 +60,7 @@ public class Main {
                         System.out.println("Log out");
                         return;
                     default:
-                        System.out.println("无效的选择，请重新输入！");
+                        System.out.println("Invalid selection, please re-enter！");
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid selection, please re-enter！");
