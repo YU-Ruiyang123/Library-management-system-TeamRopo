@@ -2,16 +2,47 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.InputMismatchException;
-
 public class Main {
     private static BookManager manager = new BookManager(); //Objects used to manage books. /用于管理书籍的对象
     private static Scanner scanner = new Scanner(System.in); //A scanner used to obtain user input./用于获取用户输入的扫描器
 
     public static void main(String[] args) {
-        manager.loadBooksFromFile(); // Load the book data when the program starts./程序启动时加载书籍数据
+        manager.loadBooksFromFile();
+
         while (true) {
-            displayMenu();
+            System.out.println("Select mode:");
+            System.out.println("1. Graphic User Interface (GUI)");
+            System.out.println("2. Console");
+            System.out.print("Enter your choice (1 or 2): ");
+
             try {
+                int mode = scanner.nextInt();
+                scanner.nextLine(); // 清除换行符
+
+                if (mode == 1) {
+                    javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                        public void run() {
+                            new BookManagerGUI(manager);
+                        }
+                    });
+                    break; // 退出主循环，防止返回文本界面
+                } else if (mode == 2) {
+                    runConsoleInterface();
+                    break; // 同样退出主循环
+                } else {
+                    System.out.println("Invalid choice. Please enter 1 or 2.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please NUMBER 1 or 2.");
+                scanner.nextLine(); // 清除错误输入
+            }
+        }
+    }
+
+private static void runConsoleInterface() {
+            while (true) {
+                displayMenu();
+                try {
                 System.out.print("Please enter your selection: ");
                 int choice = scanner.nextInt();
                 scanner.nextLine(); //Clear the newline of the input line./清除输入行的换行符
